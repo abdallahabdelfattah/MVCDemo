@@ -21,6 +21,12 @@ builder.Services.AddFluentValidation(f =>
     f.RegisterValidatorsFromAssemblyContaining<Program>(); 
 });
 
+
+
+
+
+
+
 builder.Services.AddDbContext<ApplicationContext>(ServiceLifetime.Singleton); 
 
 var app = builder.Build();
