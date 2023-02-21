@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<Customer>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<partial  name="_x"></partial>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+
+            <partial name="_table" model="item"></partial>
+
+}
+    </tbody>
+</table>
