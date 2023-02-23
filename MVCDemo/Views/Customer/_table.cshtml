@@ -35,6 +35,10 @@
     <td>
         @Html.DisplayFor(modelItem => Model.Language.LanguageId)
     </td>
+
+    <td>
+        <img width="150px" src="~/images/@Model.ImagePath" />
+    </td>
     <td>
         <a asp-action="Edit" asp-route-id="@Model.CustomerId">Edit</a> |
         <a asp-action="Details" asp-route-id="@Model.CustomerId">Details</a> |

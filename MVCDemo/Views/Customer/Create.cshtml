@@ -5,16 +5,12 @@
 
 
 <h1> Create </h1>
-<form  asp-action="Create" asp-controller="Customer" method="post">
+<form asp-action="Create" asp-controller="Customer" method="post" enctype="multipart/form-data">
 
     <div class="text-danger" asp-validation-summary="All">
 
-
-       
     </div>
 
-
-   
     <div class="form-group">
 
         <label asp-for="FirstName">     </label>
@@ -66,12 +62,12 @@
 
 
 
-    
     <div class="form-group">
-        <label >  File  </label>
-        <input   name="image"  type="file" class="form-control" />
-        <span asp-validation-for="BirthDate" class="text-danger"></span>
+        <label>  File  </label>
+        <input  asp-for="MyFile" type="file" class="form-control" />
+        <span asp-validation-for="MyFile" class="text-danger"></span>
     </div>
+  
 
 
 

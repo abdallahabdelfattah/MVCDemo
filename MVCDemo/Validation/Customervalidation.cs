@@ -9,9 +9,9 @@ namespace MVCDemo.Validation
 
         public Customervalidation()
         {
-            RuleFor(a=>a.FirstName).NotEmpty();
+            //RuleFor(a=>a.FirstName).NotEmpty();
 
-            RuleFor(a => a.FirstName).MinimumLength(5);
+            //RuleFor(a => a.FirstName).MinimumLength(5);
 
             
 

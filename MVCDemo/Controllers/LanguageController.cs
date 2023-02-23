@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVCDemo.Extentions;
 using MVCDemo.Models;
 using MVCDemo.Services;
 using MVCDemo.ViewModels;
@@ -9,8 +10,6 @@ namespace MVCDemo.Controllers
     // Depenadnacey injection  //  Files 
     public class LanguageController : Controller
     {
-
-       
 
         public LanguageController(IConfiguration configuration, IHostEnvironment hostEnvironment )
         {
@@ -24,15 +23,32 @@ namespace MVCDemo.Controllers
         public IActionResult Index()
         {
           
+            ///  check  
+            ///  
+
+
+
+
+
+
+
+
+
+            /// log   files 
             var list = db.Languages.Select(a => new CreateLanguageVM() { Code = a.Code, Name = a.Name }).ToList();
             return View(list);
         }
 
-        public IActionResult Create( )
+        public IActionResult Create( IFormFile x )
         {
             //  
-           
-           //  LIst  Language Dto 
+            //  LIst  Language Dto 
+            var folderPath = Path.Combine("", "images");
+            Helper.uploadFile(x, folderPath);
+
+
+
+
             return View();
         }
 

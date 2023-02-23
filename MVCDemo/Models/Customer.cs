@@ -26,8 +26,13 @@ namespace MVCDemo.Models
         //[Required]
         public  Gender?  Gender { get; set; }  //  boolean      enum 
         public DateTime BirthDate { get; set; }
+
         public string?  ImagePath  { get; set; }
         public byte[]? Image { get; set; }
+
+        [NotMapped]
+        public IFormFile MyFile { get; set; }
+
         public DateTime CreatedOn { get; set; }= DateTime.Now;
         public int CreatedBy { get; set; } = 1; 
         public DateTime? UpdatedOn { get; set; }

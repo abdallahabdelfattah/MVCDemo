@@ -1,7 +1,9 @@
 ﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using MVCDemo.Extentions;
 using MVCDemo.Models;
 using System;
+using System.Text.RegularExpressions;
 
 namespace MVCDemo.Controllers
 {
@@ -12,16 +14,16 @@ namespace MVCDemo.Controllers
 
 
         ApplicationContext db= new ApplicationContext();
-
-
-        //  Asp core  // New 
-        public CustomerController()
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        IConfiguration _configuration;
+        public CustomerController( IWebHostEnvironment webHostEnvironment, IConfiguration configuration )
         {
-          
+            _webHostEnvironment = webHostEnvironment;
+            _configuration = configuration;
         }
         public IActionResult Index()
         {
-
+            //var imagePath = _configuration.GetSection("FilesPaths:pathImages").Value.ToString(); 
             var customers= db.Customers.ToList();
 
             return View(customers);
@@ -36,24 +38,24 @@ namespace MVCDemo.Controllers
         }
 
 
-       
-
         [HttpPost]
-        public IActionResult Create(  Customer customer)
+        public IActionResult Create(  Customer customer )
         {
 
-            var isvalid = ModelState.IsValid;
-            if (customer.FirstName !=null &&   customer.FirstName.StartsWith("m"))
-            {
-                ModelState.AddModelError("FirstName", "يجب ادخال m "); 
-            }
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-               db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                //  Save  File    Path  >> Insert  DB   //  name  // path 
+
+                  var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                   Helper.uploadFile(customer.MyFile, folderPath); 
+
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+
+
+                    return RedirectToAction("Index");
+                }
             else
             {
                 return View(customer);
@@ -62,18 +64,7 @@ namespace MVCDemo.Controllers
         }
 
 
-
-
-
-        [HttpPost]
-        public IActionResult Login(Customer customer)
-        {
-
-      
-             return View();
-
-        }
-
+     
 
     }
 }
