@@ -47,7 +47,7 @@ namespace MVCDemo.Controllers
             {
                 //  Save  File    Path  >> Insert  DB   //  name  // path 
 
-                  var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                   var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "images");
                    Helper.uploadFile(customer.MyFile, folderPath); 
 
                     db.Customers.Add(customer);
