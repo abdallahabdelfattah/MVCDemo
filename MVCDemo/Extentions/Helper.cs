@@ -1,11 +1,14 @@
-﻿namespace MVCDemo.Extentions
+﻿using MVCDemo.Models;
+using MVCDemo.ViewModels;
+
+namespace MVCDemo.Extentions
 {
     public  static class Helper
     {
 
         public static string uploadFile(IFormFile _file, string folderPath)
         {
-            var filename = Guid.NewGuid().ToString() + _file.FileName;
+            var filename = Guid.NewGuid().ToString()  + Path.GetExtension(_file.FileName);
             using (var st = new FileStream(folderPath + "//" + filename, FileMode.Create))
             {
                 _file.CopyTo(st);
@@ -24,6 +27,15 @@
             return !(allowedExtention.Contains(extention));
         }
 
+        public static void DeleteFile(string fullPath )
+        { 
+            var isExist = System.IO.File.Exists(fullPath);
+            if (isExist)
+            {
+                System.IO.File.Delete(fullPath);
+            }
+        }
+     
 
-    }
+}
 }

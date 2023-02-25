@@ -43,6 +43,8 @@ namespace MVCDemo.Controllers
         {
             //  
             //  LIst  Language Dto 
+            //  check 
+            //  size 
             var folderPath = Path.Combine("", "images");
             Helper.uploadFile(x, folderPath);
 

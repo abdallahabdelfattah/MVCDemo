@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundel.min.css",
+    "inputFiles": [
+      "wwwroot/css/file1.css",
+      "wwwroot/css/file2.css",
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/x.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+
+
+
+
+      
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

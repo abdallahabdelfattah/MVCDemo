@@ -1,0 +1,16 @@
+﻿@model Customer 
+
+<div>
+    <p> F Name   @Model.FirstName</p>
+    <p> L Name   @Model.LastName</p>
+    <p> Gender    @Model.Gender.ToString()</p>
+
+    <img width="350px" src="~/images/@Model.ImagePath" />
+
+    <form asp-action="ConfirmDelete">
+
+        <input   type="hidden"  asp-for="CustomerId"/>
+        <button  class="btn btn-danger"> Delete</button>
+        <a  asp-action="Index"  class="btn btn-primary">  back To list  </a>
+    </form>
+</div>

@@ -33,6 +33,7 @@ namespace MVCDemo.Models
         [NotMapped]
         public IFormFile MyFile { get; set; }
 
+
         public DateTime CreatedOn { get; set; }= DateTime.Now;
         public int CreatedBy { get; set; } = 1; 
         public DateTime? UpdatedOn { get; set; }
@@ -46,6 +47,7 @@ namespace MVCDemo.Models
 
         public List<CustomerCourses>? Courses { get; set; }
 
+        public bool IsDeleted  { get; set; }
 
 
 

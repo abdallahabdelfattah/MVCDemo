@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace MVCDemo.Models
 {
@@ -21,7 +22,9 @@ namespace MVCDemo.Models
 
             modelBuilder.Entity<Customer>().Property(a=>a.FirstName).HasMaxLength(50).HasDefaultValue("First");
 
-            modelBuilder.Entity<Customer>().Property(a => a.LastName).HasColumnName("NameLat"); 
+            modelBuilder.Entity<Customer>().Property(a => a.LastName).HasColumnName("NameLat");
+
+            modelBuilder.Entity<Customer>().HasQueryFilter(p => !p.IsDeleted);
 
             base.OnModelCreating(modelBuilder);
         }

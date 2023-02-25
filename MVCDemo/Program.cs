@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using MVCDemo.Models;
 using MVCDemo.Services;
 var builder = WebApplication.CreateBuilder(args);
@@ -39,12 +40,22 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
 app.UseRouting();
+app.UseHttpsRedirection();  //  http >>  https 
+
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"D:\images\"),
+    RequestPath = "/avatars"
+});
+
+
 
 app.UseAuthorization();
+
+
+
 
 app.MapControllerRoute(
     name: "default",
